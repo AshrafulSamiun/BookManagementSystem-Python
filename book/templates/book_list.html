@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+    
+    {% block content %}
+        <div class="row align-items-start">
+           
+            {% for book in books%}
+                <div class="col-md-4 col-sm-12 col-lg-3 ">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book.title  | title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">{{ book.author }}</h6>
+                            <p class="card-text" style="min-height: 100px;">
+                                {{ book.description | truncatechars:100}}    
+                            </p>
+                            <p class="card-text">
+                            Publish Year: {{ book.publish_year }}    
+                            </p>
+                            <a href="{% url 'update_book' book.id %}" class="card-link">
+                                
+                                <button class="btn btn-primary">
+                                    Update Book
+                                </button>
+                            </a>
+                            <a href="{% url 'delete_book' book.id %}" class="card-link">
+                                <button class="btn btn-danger">
+                                    Delete Book
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+           
+        </div>
+    {% endblock %}
+    {% block title %}Book List{% endblock %}
