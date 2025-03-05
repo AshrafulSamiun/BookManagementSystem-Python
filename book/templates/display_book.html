@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Display Book
+{% endblock %}
+
+{% block content %}
+<div class="container ">
+    
+
+    <div class="bg-white rounded shadow p-4 w-75 align-middle  mx-auto">
+        <div class="mb-4 ">
+            <h1 class="h3 fw-bold text-dark ">
+                Display Book
+            </h1>
+        </div>
+        <div class="col-md-12 col-sm-12 col-lg-12 ">
+            <div class="card" >
+                <div class="card-body">
+                    <h5 class="card-title">Book Name: {{ book.title  | title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Author: {{ book.author }}</h6>
+                    <p class="card-text" style="min-height: 100px;">
+                        Description:{{ book.description }}    
+                    </p>
+                    <p class="card-text">
+                        Publish Year: {{ book.publish_year }}    
+                    </p>
+                    <a href="{% url 'update_book' book.id %}" class="card-link">
+                        
+                        <button class="btn btn-sm btn-primary">
+                            Update Book
+                        </button>
+                    </a>
+                    <a href="{% url 'delete_book' book.id %}" class="card-link">
+                        <button class="btn btn-sm btn-danger">
+                            Delete Book
+                        </button>
+                    </a>
+
+                    <a href="{% url 'book_list'  %}" class="card-link">
+                        
+                        <button class="btn btn-sm btn-primary">
+                            Show All Books
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -38,6 +38,15 @@ def update_book(request,id):
             "form": book_form,
         }
         return render(request, "book.html", context)
+    
+
+def display_book(request,id):
+    specific_book = Book.objects.get(id=id)
+   
+    context = {
+        "book": specific_book,
+    }
+    return render(request, "display_book.html", context)
 
 def delete_book(request,id):
     book = Book.objects.get(id=id)
